@@ -8,4 +8,10 @@
       <th>Name</th>
     </tr>
   </thead>
+  <tbody>
+    <tr *ngFor="let customer of shop$.customers | async">
+      <td>{{customer.id}}</td>
+      <td>{{customer.name}}</td>
+    </tr>
+  </tbody>
 </table>

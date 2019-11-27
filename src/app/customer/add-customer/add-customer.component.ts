@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Store } from '@ngxs/store';
+
+import { AddCustomer } from '../customer.actions';
+import { Customer } from '../models';
+
 @Component({
   selector: 'app-add-customer',
   templateUrl: './add-customer.component.html',
@@ -7,13 +12,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddCustomerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: Store) { }
 
   ngOnInit() {
   }
 
   addCustomer(name: string) {
-    console.log(name)
+    const customer: Customer = {
+      id: new Date().getMilliseconds(),
+      name: name
+    };
+    console.log(customer)
+    this.store.dispatch(new AddCustomer(customer));
   }
 
 }
