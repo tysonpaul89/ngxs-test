@@ -12,4 +12,8 @@ export class AddCustomerComponent implements OnInit {
   ngOnInit() {
   }
 
+  addCustomer(name: string) {
+    console.log(name)
+  }
+
 }
