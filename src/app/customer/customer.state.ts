@@ -1,4 +1,4 @@
-import { State, Action, StateContext } from "@ngxs/store";
+import { State, Action, StateContext, Selector } from "@ngxs/store";
 import { Customer } from './models';
 import { AddCustomer } from './customer.actions';
 
@@ -7,7 +7,7 @@ export interface CustomerStateModel {
 }
 
 @State<CustomerStateModel>({
-  name: 'shop',
+  name: 'customerState',
   defaults: {
     customers: []
   }
@@ -16,8 +16,7 @@ export class CustomerState {
 
   @Action(AddCustomer)
   addCustomer(ctx: StateContext<CustomerStateModel>, action: AddCustomer) {
-    const state = ctx.getState()
-    console.log(state)
+    const state = ctx.getState();
     ctx.patchState({
       customers: [
         ...state.customers,

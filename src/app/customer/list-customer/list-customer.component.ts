@@ -10,13 +10,17 @@ import { Customer } from '../models';
   styleUrls: ['./list-customer.component.css']
 })
 export class ListCustomerComponent implements OnInit {
-  customers$: Observable<Customer[]>
+  customers$: Observable<Customer[]>;
 
   constructor(private store: Store) {
-    this.customers$  = this.store.select(state => state.shop.customers);
+    this.customers$  = this.store.select(state => state.customerState.customers);
   }
 
   ngOnInit() {
+  }
+
+  removeCustomer(id: number) {
+    console.log(id);
   }
 
 }

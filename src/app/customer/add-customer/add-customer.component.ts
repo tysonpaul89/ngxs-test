@@ -20,9 +20,8 @@ export class AddCustomerComponent implements OnInit {
   addCustomer(name: string) {
     const customer: Customer = {
       id: new Date().getMilliseconds(),
-      name: name
+      name
     };
-    console.log(customer)
     this.store.dispatch(new AddCustomer(customer));
   }
 
