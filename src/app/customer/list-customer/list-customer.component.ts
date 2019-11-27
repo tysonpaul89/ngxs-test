@@ -3,6 +3,7 @@ import { Select, Store } from '@ngxs/store';
 import { CustomerState, CustomerStateModel } from '../customer.state';
 import { Observable } from 'rxjs';
 import { Customer } from '../models';
+import { RemoveCustomer } from '../customer.actions';
 
 @Component({
   selector: 'app-list-customer',
@@ -20,7 +21,7 @@ export class ListCustomerComponent implements OnInit {
   }
 
   removeCustomer(id: number) {
-    console.log(id);
+    this.store.dispatch(new RemoveCustomer(id));
   }
 
 }

@@ -1,6 +1,6 @@
 import { State, Action, StateContext, Selector } from "@ngxs/store";
 import { Customer } from './models';
-import { AddCustomer } from './customer.actions';
+import { AddCustomer, RemoveCustomer } from './customer.actions';
 
 export interface CustomerStateModel {
   customers: Customer[];
@@ -22,6 +22,16 @@ export class CustomerState {
         ...state.customers,
         action.customer
       ]
+    });
+  }
+
+  @Action(RemoveCustomer)
+  removeCustomer(ctx: StateContext<CustomerStateModel>, action: RemoveCustomer) {
+    const state = ctx.getState();
+    ctx.patchState({
+      customers: state.customers.filter(
+        customer => customer.id !== action.customerId
+      )
     });
   }
 }
